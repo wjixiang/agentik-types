@@ -1,5 +1,5 @@
 [package]
-name = "types"
+name = "agentik-types"
 version = "0.1.0"
 edition = "2024"
 authors = ["Wjixiang"]
@@ -11,7 +11,11 @@ serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 thiserror = "1.0"
 chrono = { version = "0.4", features = ["serde"] }
-reqwest = { version = "0.12", features = ["json", "stream", "multipart"], optional = true }
+reqwest = { version = "0.12", features = [
+  "json",
+  "stream",
+  "multipart",
+], optional = true }
 
 [features]
 default = ["http"]
