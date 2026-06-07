@@ -1,13 +1,11 @@
+use crate::{ContentBlock, Message, ServerToolUsage, StopReason};
 use serde::{Deserialize, Serialize};
-use crate::{Message, ContentBlock, StopReason, ServerToolUsage};
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(tag = "type")]
 pub enum MessageStreamEvent {
     #[serde(rename = "message_start")]
-    MessageStart {
-        message: Message,
-    },
+    MessageStart { message: Message },
 
     #[serde(rename = "message_delta")]
     MessageDelta {
@@ -31,9 +29,7 @@ pub enum MessageStreamEvent {
     },
 
     #[serde(rename = "content_block_stop")]
-    ContentBlockStop {
-        index: usize,
-    },
+    ContentBlockStop { index: usize },
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -55,29 +51,19 @@ pub struct MessageDeltaUsage {
 #[serde(tag = "type")]
 pub enum ContentBlockDelta {
     #[serde(rename = "text_delta")]
-    TextDelta {
-        text: String,
-    },
+    TextDelta { text: String },
 
     #[serde(rename = "input_json_delta")]
-    InputJsonDelta {
-        partial_json: String,
-    },
+    InputJsonDelta { partial_json: String },
 
     #[serde(rename = "citations_delta")]
-    CitationsDelta {
-        citation: TextCitation,
-    },
+    CitationsDelta { citation: TextCitation },
 
     #[serde(rename = "thinking_delta")]
-    ThinkingDelta {
-        thinking: String,
-    },
+    ThinkingDelta { thinking: String },
 
     #[serde(rename = "signature_delta")]
-    SignatureDelta {
-        signature: String,
-    },
+    SignatureDelta { signature: String },
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
